@@ -4,6 +4,7 @@ from ball import Ball
 from scoreboard import Scoreboard
 from random import randint
 import time
+from animation import motion
 
 screen = Screen()
 screen.listen()
@@ -12,6 +13,8 @@ screen.tracer(0)
 paddle_left = Paddle()
 paddle_right = Paddle()
 paddle_right.setx(370)
+
+motion(1, 2)
 
 scoreboard = Scoreboard()
 
@@ -25,7 +28,7 @@ screen.onkey(key="s", fun=paddle_left.move_down)
 screen.title ("Пингъ-понгъ для слабонервных")
 screen.bgcolor("black")
 screen.setup(width=800, height=600)
-speed = 0.02
+speed = 0.01
 
 
 game_is_on = True
@@ -44,7 +47,7 @@ while game_is_on:
         ball.setheading(ball.heading() - 180)
         ball.setheading(360 - ball.heading())
         if speed >= 0.01:
-            speed *= 0.5
+            speed *= 0.4
 
     # правый пропуск
     if ball.xcor() >= 370:
